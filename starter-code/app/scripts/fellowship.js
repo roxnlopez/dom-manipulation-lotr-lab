@@ -104,21 +104,24 @@ function makeBuddies() {
   // create an aside tag 
   var aside = document.createElement("ASIDE");
   // attach an unordered list of the 'buddies' in the aside
+  //create list element
   var buddiesList = document.createElement('ul');
+  aside.append(buddiesList);
   for (var i=0; i<buddies.length; i++) {
     console.log("i is now: " + i + " and buddies[i] is now: " + buddies[i]);
     var buddy = buddies[i];
+    //create list item
     var li = document.createElement("li");
     var h1 = document.createElement("h1");
     var text = document.createTextNode(buddy);
-    //append list to h1 to li to buddiesList
+    //set its contents
     h1.appendChild(text);
     li.appendChild(h1);
     buddiesList.appendChild(li);
   }
   // insert your aside as a child element of rivendell
-  var rivendell = document.createElement(lands[1]);
-  rivendell.appendChild(aside);
+  var Rivendell = document.createElement(lands[1]);
+  Rivendell.appendChild(aside);
   }
 makeBuddies();
 
