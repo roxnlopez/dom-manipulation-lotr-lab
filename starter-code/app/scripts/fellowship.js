@@ -19,7 +19,6 @@ var buddies = [
 var lands = ['The Shire', 'Rivendell', 'Mordor'];
 var body = document.querySelector('body');
 
-
 // Part 1
 
 
@@ -104,25 +103,15 @@ function makeBuddies() {
   // create an aside tag 
   var aside = document.createElement("ASIDE");
   // attach an unordered list of the 'buddies' in the aside
-  //create list element
-  var buddiesList = document.createElement('ul');
-  aside.append(buddiesList);
-  for (var i=0; i<buddies.length; i++) {
-    console.log("i is now: " + i + " and buddies[i] is now: " + buddies[i]);
-    var buddy = buddies[i];
-    //create list item
-    var li = document.createElement("li");
-    var h1 = document.createElement("h1");
-    var text = document.createTextNode(buddy);
-    //set its contents
-    h1.appendChild(text);
-    li.appendChild(h1);
-    buddiesList.appendChild(li);
+  var list = document.createElement('ul');
+  for (var i = 0; i < buddies.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = buddies[i];
+    list.appendChild(listItem);
   }
-  // insert your aside as a child element of rivendell
-  var Rivendell = document.createElement(lands[1]);
-  Rivendell.appendChild(aside);
-  }
+  var rivendellArticle = document.querySelectorAll('article')[1];
+  rivendellArticle.appendChild(list);
+}
 makeBuddies();
 
 
@@ -130,8 +119,12 @@ makeBuddies();
 // Part 5
 
 
+
 function beautifulStranger() {
   // change the 'Strider' textnode to 'Aragorn'
+  var strider = document.querySelectorAll('ul')[1];
+  var striderItem = strider.querySelectorAll('li')[3];
+  striderItem.textContent = "Aragorn";
 
 }
 beautifulStranger();
@@ -143,7 +136,9 @@ beautifulStranger();
 
 function leaveTheShire() {
   // assemble the hobbits and move them to Rivendell
-
+  var hobbitsList = document.querySelectorAll('ul')[0];
+  var rivendellArticle = document.querySelectorAll('article')[1];
+  rivendellArticle.appendChild(hobbitsList);
 }
 leaveTheShire();
 
@@ -155,7 +150,20 @@ function forgeTheFellowShip() {
   // create a new div called 'the-fellowship' within rivendell
   // add each hobbit and buddy one at a time to 'the-fellowship'
   // after each character is added make an alert that they have joined your party
+  var rivendellArticle = document.querySelectorAll('article')[1];
+  var the_fellowship = document.createElement('div');
+
+  rivendellArticle.appendChild(the_fellowship);
+
+  var buddyList = rivendellArticle.querySelectorAll('ul')[0];
+  the_fellowship.appendChild(buddyList);
+
+  var hobbitList = rivendellArticle.querySelectorAll('ul')[0];
+  the_fellowship.appendChild(hobbitList);
+
+  alert("Wolfpack just got bigger!");
 }
+forgeTheFellowShip();
 
 
 // Part 8
